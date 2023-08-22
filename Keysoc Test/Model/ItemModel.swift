@@ -16,6 +16,6 @@ struct Item: Decodable, Identifiable{
     let id = UUID()
     var kind: String?
     var artistName: String?
-    var collectionName: String?
     var trackName: String?
+    var artworkUrl100: String?
 }
