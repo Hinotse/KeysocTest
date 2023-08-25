@@ -6,7 +6,7 @@
 //
 
 import Foundation
-let baseURL = "https://itunes.apple.com/search?"
+let baseURL = "https://itunes.apple.com/"
 
 final class ItemViewModel: ObservableObject{
     @Published private(set) var hasNextPage = false
@@ -17,7 +17,7 @@ final class ItemViewModel: ObservableObject{
         print("Load iTune API...")
         self.hasNextPage = false // Disable next page until next page is available
         self.isLoading = true   // Show loading screen
-        var endpoint = URL(string: "\(baseURL)term=\(searchText.replacingOccurrences(of: " ", with: "+"))&offset=\(20*(page-1))&limit=21")!
+        var endpoint = URL(string: "\(baseURL)search?term=\(searchText.replacingOccurrences(of: " ", with: "+"))&offset=\(20*(page-1))&limit=21")!
         var request = URLRequest(url: endpoint)
         request.httpMethod = "GET"
         request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")

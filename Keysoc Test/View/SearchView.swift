@@ -106,7 +106,7 @@ struct SearchView: View {
                                                     .foregroundColor(.black)
                                                 // Artist Name
                                                 Text(item.artistName ?? "None")
-                                                    .font(.system(size:12))
+                                                    .font(.system(size:15))
                                                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
                                                     .padding(5)
                                                     .italic()
