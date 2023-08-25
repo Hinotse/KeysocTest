@@ -20,4 +20,5 @@ struct Item: Decodable, Identifiable{
     var trackId: Int?
     var artworkUrl100: String?
     var longDescription: String?
+    var country: String?
 }

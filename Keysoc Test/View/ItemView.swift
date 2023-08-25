@@ -10,10 +10,12 @@ import SwiftUI
 struct ItemView: View {
     @StateObject private var vm = LookupItemViewModel()
     private var itemId: String = ""
+    private var country: String = ""
     private var unknownImage = "https://www.google.com/url?sa=i&url=https%3A%2F%2Fthenounproject.com%2Fbrowse%2Ficons%2Fterm%2Funknown%2F&psig=AOvVaw3qChMvIhdUAgacZ68t654c&ust=1692776552115000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCNClj5ri74ADFQAAAAAdAAAAABAE"
     
-    init(itemId: String){
+    init(itemId: String, country: String){
         self.itemId = itemId
+        self.country = country
     }
     
     var body: some View {
@@ -103,7 +105,6 @@ struct ItemView: View {
                 
                 Spacer()
             }
-            .frame(width: .infinity)
         }
         .onAppear(perform: lookupItem)
         .refreshable{
@@ -115,6 +116,7 @@ struct ItemView: View {
 
 extension ItemView{
     func lookupItem(){
-        vm.lookupItem(id: itemId)
+        print("itemID: \(itemId), country: \(country)")
+        vm.lookupItem(id: itemId, country: country)
     }
 }
