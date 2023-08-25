@@ -17,5 +17,6 @@ struct Item: Decodable, Identifiable{
     var kind: String?
     var artistName: String?
     var trackName: String?
+    var trackId: Int?
     var artworkUrl100: String?
 }

@@ -17,13 +17,11 @@ final class ItemViewModel: ObservableObject{
         print("Load iTune API...")
         self.hasNextPage = false // Disable next page until next page is available
         self.isLoading = true   // Show loading screen
-        let sem = DispatchSemaphore.init(value: 0)
-        var endpoint = URL(string: "\(baseURL)term=\(searchText.replacingOccurrences(of: " ", with: "+"))&offset=\(20*(page-1))&limit=20")!
+        var endpoint = URL(string: "\(baseURL)term=\(searchText.replacingOccurrences(of: " ", with: "+"))&offset=\(20*(page-1))&limit=21")!
         var request = URLRequest(url: endpoint)
         request.httpMethod = "GET"
         request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
         let task = URLSession.shared.dataTask(with: request) {data, response, error in
-            defer {sem.signal()}
             if let error = error{
                 print("error")
                 return
@@ -35,44 +33,18 @@ final class ItemViewModel: ObservableObject{
             }
             if let data = data,
                let result = try? JSONDecoder().decode(iTune.self, from: data){
-                DispatchQueue.main.async {
+                DispatchQueue.global(qos: .default).async {
                     self.itemList = result.results ?? [Item]()
                     self.resultCount = result.resultCount
-                }
-            }
-        }
-        task.resume()
-//        sem.wait()
-        
-        
-        // Find resultcount on next page
-        endpoint = URL(string: "\(baseURL)term=\(searchText.replacingOccurrences(of: " ", with: "+"))&offset=\(20*(page-1))&limit=20")!
-        request = URLRequest(url: endpoint)
-        request.httpMethod = "GET"
-        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
-        let task2 = URLSession.shared.dataTask(with: request) {data, response, error in
-            if let error = error{
-                print("error")
-            }
-            
-            guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else{
-                print("httpResponse Error (No next page)")
-                
-                return
-            }
-            if let data = data,
-               let result = try? JSONDecoder().decode(iTune.self, from: data){
-                if result.resultCount > 0{
-                    DispatchQueue.main.async {
+                    if self.resultCount > 20{
+                        self.itemList.removeLast()  // Hide the 21th item
                         self.hasNextPage = true
                     }
-                    
                 }
             }
-        }
-        task2.resume()
-        sem.wait()
-        self.isLoading = false
+            self.isLoading = false
+        }.resume()
+        
         print("iTune API Completed")
     }
 }

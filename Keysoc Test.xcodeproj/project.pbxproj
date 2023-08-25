@@ -15,6 +15,7 @@
 		3539763E2A935B6700F525C3 /* ItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3539763D2A935B6700F525C3 /* ItemViewModel.swift */; };
 		353976412A93611D00F525C3 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353976402A93611D00F525C3 /* SearchView.swift */; };
 		353976432A93624B00F525C3 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353976422A93624B00F525C3 /* HomeView.swift */; };
+		35C5F4362A95FBEF009104A7 /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C5F4352A95FBEF009104A7 /* ItemView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		3539763D2A935B6700F525C3 /* ItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewModel.swift; sourceTree = "<group>"; };
 		353976402A93611D00F525C3 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		353976422A93624B00F525C3 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		35C5F4352A95FBEF009104A7 /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 			children = (
 				353976402A93611D00F525C3 /* SearchView.swift */,
 				353976422A93624B00F525C3 /* HomeView.swift */,
+				35C5F4352A95FBEF009104A7 /* ItemView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -177,6 +180,7 @@
 				353976412A93611D00F525C3 /* SearchView.swift in Sources */,
 				3539763B2A93596F00F525C3 /* ItemModel.swift in Sources */,
 				3539763E2A935B6700F525C3 /* ItemViewModel.swift in Sources */,
+				35C5F4362A95FBEF009104A7 /* ItemView.swift in Sources */,
 				3539762E2A93592E00F525C3 /* ContentView.swift in Sources */,
 				3539762C2A93592E00F525C3 /* Keysoc_TestApp.swift in Sources */,
 			);
