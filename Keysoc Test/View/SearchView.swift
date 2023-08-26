@@ -31,7 +31,7 @@ struct SearchView: View {
                         .autocapitalization(.none)
                         .onChange(of: searchText) { value in
                             currentPage = 1
-                            getItem()
+                            searchItem()
                         }
                 }
                 Grid{
@@ -170,6 +170,15 @@ struct SearchView: View {
 
 
 extension SearchView{
+    func searchItem(){
+        let currentSearch = searchText
+        DispatchQueue.main.asyncAfter(deadline: .now()+1){
+            if currentSearch == searchText{
+                vm.getItem(page: currentPage, searchText: searchText, country: country, mediaType: mediaType)
+            }
+        }
+    }
+    
     func getItem(){
         vm.getItem(page: currentPage, searchText: searchText, country: country, mediaType: mediaType)
     }
