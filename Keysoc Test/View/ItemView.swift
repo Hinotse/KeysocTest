@@ -36,37 +36,37 @@ struct ItemView: View {
                 // Track Info
                 Grid(alignment: .leading, horizontalSpacing: 10, verticalSpacing: 10){
                     GridRow{
-                        Text("Track Name:")
+                        Text("trackName")
                             .frame(maxWidth: .infinity, alignment: .center)
                             .bold()
                             .foregroundColor(.black)
                             .font(.system(size:18))
-                        Text("\(vm.item.trackName ?? "None")")
-                            .frame(maxWidth: .infinity, alignment: .center)
-                            .bold()
-                            .foregroundColor(.black)
-                            .font(.system(size:18))
-                    }
-                    GridRow{
-                        Text("Kind:")
-                            .frame(maxWidth: .infinity, alignment: .center)
-                            .bold()
-                            .foregroundColor(.black)
-                            .font(.system(size:18))
-                        Text("\(vm.item.kind ?? "None")")
+                        Text("\(vm.item.trackName ?? "none")")
                             .frame(maxWidth: .infinity, alignment: .center)
                             .bold()
                             .foregroundColor(.black)
                             .font(.system(size:18))
                     }
                     GridRow{
-                        Text("Artist Name: ")
+                        Text("kind")
+                            .frame(maxWidth: .infinity, alignment: .center)
+                            .bold()
+                            .foregroundColor(.black)
+                            .font(.system(size:18))
+                        Text("\(vm.item.kind ?? "none")")
+                            .frame(maxWidth: .infinity, alignment: .center)
+                            .bold()
+                            .foregroundColor(.black)
+                            .font(.system(size:18))
+                    }
+                    GridRow{
+                        Text("artistName")
                             .frame(maxWidth: .infinity, alignment: .center)
                             .bold()
                             .foregroundColor(.black)
                             .font(.system(size:18))
                         
-                        Text("\(vm.item.artistName ?? "None")")
+                        Text("\(vm.item.artistName ?? "none")")
                             .frame(maxWidth: .infinity, alignment: .center)
                             .bold()
                             .foregroundColor(.black)
@@ -74,12 +74,12 @@ struct ItemView: View {
                     }
                 }.padding()
                 
-                Text("Description:")
+                Text("description")
                     .frame(maxWidth: .infinity, alignment: .center)
                     .bold()
                     .foregroundColor(.black)
                     .font(.system(size:18))
-                Text(vm.item.longDescription ?? "None")
+                Text(vm.item.longDescription ?? "none")
                     .frame(maxWidth: .infinity, alignment: .center)
                     .bold()
                     .foregroundColor(.black)
@@ -91,7 +91,7 @@ struct ItemView: View {
                     Button(action: {
                         // Bookmark the track item
                     }){
-                        Text("Bookmark")
+                        Text("addFavorites")
                             .fontWeight(.bold)
                             .font(.title)
                             .padding()

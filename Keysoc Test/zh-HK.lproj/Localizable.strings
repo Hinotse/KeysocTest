@@ -1,0 +1,28 @@
+/* 
+  Localizable.strings
+  Keysoc Test
+
+  Created by hino on 25/8/2023.
+  
+*/
+"search" = "搜尋";
+"bookmark" = "收藏";
+"previousPage" = "上一頁";
+"nextPage" = "下一頁";
+"country" = "國家:";
+"mediaType" = "媒體類別:";
+"searchMsg" = "請在搜尋欄中輸入歌曲、專輯或藝術家";
+"noResult" = "找不到";
+"page" = "頁數";
+"searchPlaceholder" = "搜尋 ...";
+"trackName" = "曲目名稱:";
+"kind" = "類別:";
+"artistName" = "演員名稱:";
+"description" = "描述:";
+"addFavorites" = "增加到收藏";
+"none" = "N/A";
+"language" = "語言";
+"lang_eng" = "英文";
+"lang_tc" = "繁體中文";
+"lang_sc" = "簡體中文";
+"bookmark_list" = "收藏名單";

@@ -1,0 +1,28 @@
+/* 
+  Localizable.strings
+  Keysoc Test
+
+  Created by hino on 25/8/2023.
+  
+*/
+"search" = "Search";
+"bookmark" = "Bookmark";
+"previousPage" = "Previous";
+"nextPage" = "Next";
+"country" = "Country:";
+"mediaType" = "Media Type:";
+"searchMsg" = "Please type the song, albums, or artists in search bar";
+"noResult" = "No Result";
+"page" = "Page";
+"searchPlaceholder" = "Search ...";
+"trackName" = "Track Name:";
+"kind" = "Kind:";
+"artistName" = "Artist Name:";
+"description" = "Description:";
+"addFavorites" = "Add to Favorite";
+"none" = "N/A";
+"language" = "Language";
+"lang_eng" = "English";
+"lang_tc" = "Tradition Chinese";
+"lang_sc" = "Simplified Chinese";
+"bookmark_list" = "Bookmark List";

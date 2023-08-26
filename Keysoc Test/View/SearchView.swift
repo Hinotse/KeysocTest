@@ -21,7 +21,7 @@ struct SearchView: View {
             VStack(){
                 // Search Bar
                 VStack{
-                    TextField("Search ...", text: $searchText)
+                    TextField("searchPlaceholder", text: $searchText)
                         .padding(7)
                         .padding(.horizontal, 25)
                         .background(Color(.systemGray6))
@@ -36,7 +36,7 @@ struct SearchView: View {
                 }
                 Grid{
                     GridRow{
-                        Text("Country:")
+                        Text("country")
                         // Country Picker
                         Picker("Country", selection: $country){
                             ForEach(countryList, id: \.self){
@@ -47,7 +47,7 @@ struct SearchView: View {
 //                            print(country)
                             getItem()
                         }
-                        Text("Media Type:")
+                        Text("mediaType")
                         // Media Type Picker
                         Picker("Media", selection: $mediaType){
                             ForEach(mediaTypeList, id: \.self){
@@ -68,7 +68,7 @@ struct SearchView: View {
                             currentPage -= 1
                         }
                     }){
-                        Text("Previous")
+                        Text("previousPage")
                             .padding(10)
                             .background(Color.blue)
                             .foregroundColor(Color.white)
@@ -76,12 +76,11 @@ struct SearchView: View {
                             .frame(width: 150)
                     }
                     VStack{
-                        Text("Page")
+                        Text("page")
                             .frame(width: 50)
                         Text("\(currentPage)")
                             .font(.system(size:24))
                             .onChange(of: currentPage) { value in
-                                print("Chaging page: \(value)")
                                 getItem()
                             }
                     }
@@ -91,7 +90,7 @@ struct SearchView: View {
                             currentPage += 1
                         }
                     }){
-                        Text("Next")
+                        Text("nextPage")
                             .padding(10)
                             .background(Color.blue)
                             .foregroundColor(Color.white)
@@ -104,10 +103,10 @@ struct SearchView: View {
                 if vm.isLoading{
                     ProgressView()
                 }else if searchText.trimmingCharacters(in: .whitespaces) == "" {
-                    Text("Please type the song, albums, or artists in search bar")
+                    Text("searchMsg")
                         .foregroundColor(.gray)
                 }else if vm.resultCount == 0{
-                    Text("No Result")
+                    Text("noResult")
                         .foregroundColor(.gray)
                 }else{
                     // Build iTune items UI
@@ -129,14 +128,14 @@ struct SearchView: View {
                                             
                                             VStack(alignment: .leading, spacing: 6){
                                                 // Song Name
-                                                Text(item.trackName ?? "None")
+                                                Text(item.trackName ?? "none")
                                                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
                                                     .padding(5)
                                                     .lineLimit(2)
                                                     .bold()
                                                     .foregroundColor(.black)
                                                 // Artist Name
-                                                Text(item.artistName ?? "None")
+                                                Text(item.artistName ?? "none")
                                                     .font(.system(size:15))
                                                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
                                                     .padding(5)

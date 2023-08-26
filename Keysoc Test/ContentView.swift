@@ -12,11 +12,11 @@ struct ContentView: View {
         TabView{
             SearchView().tabItem{
                 Image(systemName: "magnifyingglass")
-                Text("Search")
+                Text("search")
             }
-            HomeView().tabItem{
-                Image(systemName: "house.fill")
-                Text("Home")
+            BookmarkView().tabItem{
+                Image(systemName: "bookmark.fill")
+                Text("bookmark")
             }
         }
     }
@@ -25,5 +25,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environment(\.locale, .init(identifier: "en"))
     }
 }
