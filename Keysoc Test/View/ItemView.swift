@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ItemView: View {
     @StateObject private var vm = LookupItemViewModel()
+    let userDefaults = UserDefaults.standard
+    @State var bookmarkList: [Item] = []
     private var itemId: String = ""
     private var country: String = ""
     private var unknownImage = "https://www.google.com/url?sa=i&url=https%3A%2F%2Fthenounproject.com%2Fbrowse%2Ficons%2Fterm%2Funknown%2F&psig=AOvVaw3qChMvIhdUAgacZ68t654c&ust=1692776552115000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCNClj5ri74ADFQAAAAAdAAAAABAE"
@@ -88,16 +90,56 @@ struct ItemView: View {
                 // Button for bookmark
                 HStack{
                     Spacer()
-                    Button(action: {
-                        // Bookmark the track item
-                    }){
-                        Text("addFavorites")
-                            .fontWeight(.bold)
-                            .font(.title)
-                            .padding()
-                            .background(Color.blue)
-                            .foregroundColor(.white)
-                            .cornerRadius(10)
+                    if bookmarkList.contains{$0.trackId == vm.item.trackId}{
+                        // Already bookmarked
+                        Button(action: {
+                            // Bookmark the track item
+                            if let index = bookmarkList.firstIndex{$0.trackId == vm.item.trackId}{
+                                bookmarkList.remove(at: index)
+                            }
+                            
+                            do{
+                                let encodedData = try JSONEncoder().encode(bookmarkList)
+                                userDefaults.set(encodedData, forKey: "bookmarkList")
+                            }
+                            catch{
+                                print("Can't encode bookmark list")
+                            }
+                            print("Remove bookmark")
+                        }){
+                            Text("removeFavorites")
+                                .fontWeight(.bold)
+                                .font(.title)
+                                .padding()
+                                .background(Color.red)
+                                .foregroundColor(.white)
+                                .cornerRadius(10)
+                        }
+                    }
+                    else{
+                        // No bookmarked
+                        Button(action: {
+                            // Bookmark the track item
+                            
+                            
+                            bookmarkList.append(vm.item)
+                            do{
+                                let encodedData = try JSONEncoder().encode(bookmarkList)
+                                userDefaults.set(encodedData, forKey: "bookmarkList")
+                            }
+                            catch{
+                                print("Can't encode bookmark list")
+                            }
+                            print("Add bookmark")
+                        }){
+                            Text("addFavorites")
+                                .fontWeight(.bold)
+                                .font(.title)
+                                .padding()
+                                .background(Color.blue)
+                                .foregroundColor(.white)
+                                .cornerRadius(10)
+                        }
                     }
                     Spacer()
                 }
@@ -117,6 +159,17 @@ struct ItemView: View {
 extension ItemView{
     func lookupItem(){
         print("itemID: \(itemId), country: \(country)")
-        vm.lookupItem(id: itemId, country: country)
+        // Lookup Item
+        vm.lookupItem(id: itemId, country: String(country.prefix(2)))
+        
+        // Load bookmark list
+        if let savedData = userDefaults.object(forKey: "bookmarkList") as? Data{
+            do{
+                bookmarkList = try JSONDecoder().decode([Item].self, from: savedData)
+            }
+            catch{
+                print("Fail to read savedData")
+            }
+        }
     }
 }

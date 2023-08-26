@@ -12,7 +12,7 @@ struct iTune: Decodable{
     var results: [Item]?
 }
 
-struct Item: Decodable, Identifiable{
+struct Item: Identifiable, Codable{
     let id = UUID()
     var kind: String?
     var artistName: String?
