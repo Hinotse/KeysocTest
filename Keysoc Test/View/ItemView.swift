@@ -33,6 +33,7 @@ struct ItemView: View {
             },placeholder: {
                 ProgressView()
             })
+            .padding()
             
             VStack(alignment: .leading, spacing: 1){
                 // Track Info
@@ -147,11 +148,14 @@ struct ItemView: View {
                 
                 Spacer()
             }
+            .padding()
         }
         .onAppear(perform: lookupItem)
         .refreshable{
             lookupItem()
         }
+        .background(Color.white)
+        .cornerRadius(5)
         .padding()
     }
 }

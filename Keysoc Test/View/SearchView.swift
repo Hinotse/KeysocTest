@@ -124,7 +124,8 @@ struct SearchView: View {
                                             },placeholder: {
                                                 ProgressView()
                                             })
-                                            .frame(width: 100)
+                                            .frame(width: 130)
+                                            .padding()
                                             
                                             VStack(alignment: .leading, spacing: 6){
                                                 // Song Name
@@ -147,6 +148,8 @@ struct SearchView: View {
                                         }
                                     }
                                 }
+                                .background(Color.white)
+                                .cornerRadius(5)
                                 .padding()
                                 
                             }

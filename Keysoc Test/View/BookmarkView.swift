@@ -83,7 +83,8 @@ struct BookmarkView: View {
                                         },placeholder: {
                                             ProgressView()
                                         })
-                                        .frame(width: 100)
+                                        .frame(width: 130)
+                                        .padding()
                                         
                                         VStack(alignment: .leading, spacing: 6){
                                             // Song Name
@@ -106,6 +107,8 @@ struct BookmarkView: View {
                                     }
                                 }
                             }
+                            .background(Color.white)
+                            .cornerRadius(5)
                             .padding()
                             
                         }
@@ -130,8 +133,6 @@ struct BookmarkView_Previews: PreviewProvider {
 
 extension BookmarkView{
     func getBookmark(){
-        //        self.itemList = userDefaults.array(forKey: "bookmarkList") as? [Item] ?? []
-        //        print(self.itemList)
         if let savedData = userDefaults.object(forKey: "bookmarkList") as? Data{
             do{
                 self.itemList = try JSONDecoder().decode([Item].self, from: savedData)
